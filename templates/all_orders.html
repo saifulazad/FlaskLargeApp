@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% set title = 'Homepage' %}
+
+{% block content %}
+
+
+
+ <ul class="nav navbar-nav navbar-right">
+
+{% for orderNo in orders %}
+<li ><a href="order/{{ orderNo }}">{{ orderNo }}</a> </li>
+{% endfor %}
+
+
+
+</ul>
+
+
+
+
+
+</li>
+
+{#<p>#}
+{#{{ orders }}#}
+{##}
+{#</p>#}
+
+
+{% endblock %}

@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<div class="span10">
+
+    {% include 'admin_Header.html' with context %}
+
+	<div class="main-area dashboard">
+
+			<div class="alert alert-info">
+				<a class="close" data-dismiss="alert" href="#">x</a>
+				<h4 class="alert-heading">Information</h4>
+				The orders template can be used to list customer orders.
+			</div>
+
+			<div class="row">
+
+				<div class="span10">
+
+					<div class="slate">
+
+						<form class="form-inline" action="{{ url_for('matched_orders') }}">
+							<input type="text" class="input-large" name="search" placeholder="Order # or Customer Name...">
+							<select class="span2">
+								<option value=""> - From Date - </option>
+							</select>
+							<select class="span2">
+								<option value=""> - To Date - </option>
+							</select>
+							<select class="span2">
+								<option value=""> - Order Status - </option>
+							</select>
+							<button type="submit" class="btn btn-primary">Filter Orders</button>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="span10 listing-buttons">
+
+					<button class="btn btn-info">Search</button>
+
+					<button class="btn btn-success">Action</button>
+
+					<button class="btn btn-primary">Add New Order</button>
+
+				</div>
+
+				<div class="span10">
+
+					<div class="slate">
+
+						<div class="page-header">
+							<div class="btn-group pull-right">
+								<button class="btn dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-download-alt"></i> Export
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">CSV</a></li>
+									<li><a href="#">Excel</a></li>
+									<li><a href="#">PDF</a></li>
+								</ul>
+							</div>
+							<h2>Orders</h2>
+						</div>
+
+						<table class="orders-table table">
+						<thead>
+							<tr>
+								<th>Orders</th>
+								<th class="value">Value</th>
+								<th class="actions">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for order in orders %}
+							<tr>
+								<td><a href="/order/{{ order.order_id }}">#{{ order.order_id }} - {{ order.member }}</a> <span class="label label-info">New</span><br /><span class="meta">{{ order.order_date }}</span></td>
+								<td class="value">
+									$132.00
+								</td>
+								<td class="actions">
+									<a class="btn btn-small btn-primary" href="/order/{{ order.order_id }}">View Order</a>
+								</td>
+							</tr>
+						{% endfor %}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-info">New</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-info">New</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-success">Dispatched</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-important">Refunded</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label">Awaiting Payment</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-inverse">Failed</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-warning">Cancelled</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+{#							<tr>#}
+{#								<td><a href="vieworder.html">#12345 - John Smith</a> <span class="label label-success">Dispatched</span><br /><span class="meta">Today at 13:42</span></td>#}
+{#								<td class="value">#}
+{#									$132.00#}
+{#								</td>#}
+{#								<td class="actions">#}
+{#									<a class="btn btn-small btn-primary" href="vieworder.html">View Order</a>#}
+{#								</td>#}
+{#							</tr>#}
+						</tbody>
+						</table>
+
+					</div>
+
+				</div>
+
+				<div class="span5">
+
+					<div class="pagination pull-left">
+						<ul>
+							<li><a href="#">Prev</a></li>
+							<li class="active">
+							  <a href="#">1</a>
+							</li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">Next</a></li>
+						</ul>
+					</div>
+
+				</div>
+
+				<div class="span5 listing-buttons pull-right">
+
+					<button class="btn btn-info">Action</button>
+
+					<button class="btn btn-success">Action</button>
+
+					<button class="btn btn-primary">Add New Item</button>
+
+				</div>
+
+			</div>
+
+		<div class="row">
+
+			<div class="span10 footer">
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+	</div> <!-- end span10 -->
+
+
+{% endblock %}
+

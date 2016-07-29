@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="span10">
+
+{#	<div class="secondary-masthead">#}
+{##}
+{#		<ul class="nav nav-pills pull-right">#}
+{#			<li>#}
+{#				<a href="#"><i class="icon-globe"></i> View Website</a>#}
+{#			</li>#}
+{#			<li class="dropdown">#}
+{#				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> John Smith <b class="caret"></b>#}
+{#				</a>#}
+{#				<ul class="dropdown-menu">#}
+{#					<li><a href="profile.html">Your Profile</a></li>#}
+{#					<li class="active"><a href="form.html">Account Settings</a></li>#}
+{#					<li class="divider"></li>#}
+{#					<li><a href="#">Logout</a></li>#}
+{#				</ul>#}
+{#			</li>#}
+{#		</ul>#}
+{##}
+{#		<ul class="breadcrumb">#}
+{#			<li>#}
+{#				<a href="#">Admin</a> <span class="divider">/</span>#}
+{#			</li>#}
+{#			<li class="active">Dashboard</li>#}
+{#		</ul>#}
+{##}
+{#	</div>#}
+
+	<div class="main-area dashboard">
+
+		<div class="row">
+
+			<div class="span10">
+
+				<div class="slate clearfix">
+
+					<a class="stat-column" href="#">
+
+						<span> Welcome</span>
+
+					</a>
+				<!--
+					<a class="stat-column" href="#">
+
+						<span class="number">452</span>
+						<span>Members</span>
+
+					</a>
+-->
+				<!--
+					<a class="stat-column" href="#">
+
+						<span class="number">348</span>
+						<span>Subscribers</span>
+
+					</a>
+				-->
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="span5">
+                <form action="{{ url_for('login') }}" method="post">
+				    <div class="slate">
+
+					<div class="page-header">
+						<h2><i class="icon-signin pull-right"></i>Login</h2>
+					</div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="input01">User Name</label>
+                        <div class="controls">
+                          <input type="text" name="email" class="input-xlarge" id="input01">
+
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <label class="control-label" for="input01">Password</label>
+                        <div class="controls">
+                          <input type="password" name="pw" class="input-xlarge" id="input01">
+
+                        </div>
+                      </div>
+                      <button class="btn btn-default">Log in</button>
+
+
+				</div>
+				</form>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+	</div> <!-- end span10 -->
+
+	{% endblock %}

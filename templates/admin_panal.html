@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% set title = 'Homepage' %}
+
+{% block content %}
+ <p>Users</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for name in users  %}
+      {% if users[name].isadmin == False %}
+      <tr>
+        <td>{{ name }}</td>
+         <td>{{ users[name].pw }}</td>
+         <td><a href="/delete/{{ name }}" class="text-center new-account">Delete </a></td>
+      </tr>
+        {% endif %}
+       {% endfor %}
+    </tbody>
+  </table>
+
+ <div class="row">
+        <form class="form-inline" method="post" action="{{ url_for('add_user') }}">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" name="name" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Password</label>
+    <input type="password" name="pw" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <button type="submit" class="btn btn-default">Add</button>
+</form>
+    </div>
+
+
+{% endblock %}
+

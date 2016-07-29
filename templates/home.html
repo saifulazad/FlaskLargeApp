@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% set title = 'Homepage' %}
+
+{% block content %}
+
+
+
+ <div id="body">
+
+         <h1>Welcome To Home Page</h1>
+
+
+    {% for x in a | upper %}
+         <li> {{x}} </li>
+{% endfor %}
+
+
+ </div>
+
+
+<p> Hi I am Saiful Islam Azad</p>
+
+
+<script>
+
+    function MakeUi(data){
+
+        var para = document.createElement("p");
+        var h1 = document.createElement("h1");
+
+        var title = document.createTextNode(data.title);
+        var body = document.createTextNode(data.body);
+
+        para.appendChild(body);
+        h1.appendChild(title);
+
+        var element = document.getElementById("body");
+
+        element.appendChild(h1);
+        element.appendChild(para);
+
+    }
+
+
+</script>
+
+<script>
+$(document).ready(function() {
+$.getJSON( "http://jsonplaceholder.typicode.com/posts", function( data ) {
+  var items = [];
+
+
+
+
+
+    $.each( data, function( key, val ) {
+
+     //   MakeUi(val);
+
+    });
+              });
+});
+
+
+</script>
+
+
+{% endblock %}
