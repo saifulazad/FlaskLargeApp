@@ -1,6 +1,6 @@
 __author__ = 'Azad'
 from home import Home
 
-@Home.route('/')
+@Home.route('/home')
 def home():
     return 'Home'

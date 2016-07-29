@@ -3,7 +3,7 @@ import jinja2
 
 __author__ = 'Azad'
 from flask import Flask
-from polls import feed
+#from polls import feed
 #from posts import chat
 from home import Home
 #
@@ -26,6 +26,6 @@ from FlaskLargeApp import app
 from posts import *
 
 # Run a test server.
-from posts import app
+from home import app
 app.run(debug=True)
 

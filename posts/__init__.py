@@ -6,7 +6,7 @@ __author__ = 'Azad'
 
 # Import flask and template operators
 from flask import Flask, render_template
-
+from home import Home
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -30,6 +30,8 @@ from posts.mod_auth.controllers import mod_auth as auth_module
 
 # Register blueprint(s)
 app.register_blueprint(auth_module)
+
+app.register_blueprint(Home)
 # app.register_blueprint(xyz_module)
 # ..
 
