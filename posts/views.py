@@ -7,6 +7,20 @@ from . import chat
 #     return 'chat'
 #
 from flask.views import View, MethodView
+from models import User
+class UserDetails(View):
+
+    def get_template_name(self):
+
+            return 'chat_details.html'
+
+    def render_template(self, context):
+        return render_template(self.get_template_name(), **context)
+
+
+    def dispatch_request(self, name):
+        context = {'object': name}
+        return self.render_template(context)
 
 
 class ListView(View):
@@ -64,5 +78,5 @@ def show(page):
 chat.add_url_rule('/chat/', view_func=ShowUsers.as_view('show_users'))
 
 chat.add_url_rule('/chat_list/', view_func=UserView.as_view('show_users_list'))
-
+chat.add_url_rule('/user/<name>', view_func=UserDetails.as_view('myview'))
 # chat.add_url_rule('/chat', 'chat', chat)
