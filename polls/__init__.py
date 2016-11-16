@@ -11,4 +11,4 @@ feed = Blueprint('feed', __name__)
 
 def reverse_filter(s):
     return s[::-1]
-import views
+from polls import views
